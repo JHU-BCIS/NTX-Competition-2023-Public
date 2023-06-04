@@ -1,0 +1,24 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<cameraConfig>
+  <!--Camera configuration saved on 4/14/2011 at 2:25 PM-->
+  <!--Near and far plane distances are in centimeters.-->
+  <nearPlane>10</nearPlane>
+  <farPlane>4000</farPlane>
+  <!--Field of view is expressed in degrees.-->
+  <fov>70</fov>
+  <position>
+    <!--Position is expressed in centimeters.-->
+    <x>0</x>
+    <y>15</y>
+    <z>0</z>
+  </position>
+  <orientation>
+    <!--Angles are in degrees. Rotation order is z => x => y.-->
+    <zrot>0</zrot>
+    <xrot>31.46</xrot>
+    <yrot>-270</yrot>
+  </orientation>
+  <cameraFly>
+    true
+  </cameraFly>
+</cameraConfig>

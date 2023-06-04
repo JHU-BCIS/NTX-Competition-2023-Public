@@ -1,0 +1,312 @@
+<deployment-project plugin="plugin.ezdeploy" plugin-version="1.0">
+  <configuration build-checksum="377153620" file="C:\git\minivie\Deploy\MiniVIE.prj" location="C:\git\minivie\Deploy" name="MiniVIE" preferred-package-location="C:\git\minivie\Deploy\MiniVIE\for_redistribution" preferred-package-type="package.type.exe" target="target.ezdeploy.standalone" target-name="Application Compiler">
+    <param.appname>MiniVIE</param.appname>
+    <param.icon>${PROJECT_ROOT}\MiniVIE_resources\icon.ico</param.icon>
+    <param.icons>
+      <file>${PROJECT_ROOT}\MiniVIE_resources\icon_48.png</file>
+      <file>${PROJECT_ROOT}\MiniVIE_resources\icon_32.png</file>
+      <file>${PROJECT_ROOT}\MiniVIE_resources\icon_24.png</file>
+      <file>${PROJECT_ROOT}\MiniVIE_resources\icon_16.png</file>
+    </param.icons>
+    <param.version>2.20</param.version>
+    <param.authnamewatermark>R. Armiger</param.authnamewatermark>
+    <param.email>robert.armiger&lt;at&gt;jhuapl.edu</param.email>
+    <param.company>JHU/APL</param.company>
+    <param.summary>Mini Virtual Integration Environment for Prosthetic Control Using Pattern Recognition</param.summary>
+    <param.description>The MiniVIE code project reflects the concepts and workflow of the JHU/APL VIE platform, 
+but is a separate and lightweight MATLAB based implementation. 
+
+Revisions:
+12/18/2019: v2.20 Compiled with updates to ROC Editor R2019a
+11/09/2016: v2.10 Compiled with dual arm motion tracking
+10/21/2016: v2.00 New GUI R2016a Release
+07/18/2016: v1.95 Fixed Multi DAQ bug, R2016a Release
+04/16/2016: v1.9 Fixed Unity Bug, R2016a Release
+04/07/2016: v1.8 Added Myo Arm Tracking
+02/26/2016: v1.7 Added New Daq Session Based Inputs
+02/25/2016: v1.6 added L/R switch for Unity
+09/03/2015: v1.5 Recompiled for Myo Armband
+11/06/2014: v1.4 Recompiled for take-home final
+11/04/2014: v1.3 Recompiled for take-home
+07/28/2014: v1.2 Recompiled under MATLAB R2013b 64-bit</param.description>
+    <param.screenshot>${PROJECT_ROOT}\MiniVIE_resources\MiniVIE Splash Screen.gif</param.screenshot>
+    <param.guid />
+    <param.installpath.string>\JHU_APL\</param.installpath.string>
+    <param.installpath.combo>option.installpath.programfiles</param.installpath.combo>
+    <param.logo>${PROJECT_ROOT}\MiniVIE_resources\MiniVIE Installer Splash.gif</param.logo>
+    <param.install.notes />
+    <param.target.install.notes />
+    <param.intermediate>${PROJECT_ROOT}\MiniVIE\for_testing</param.intermediate>
+    <param.files.only>${PROJECT_ROOT}\MiniVIE\for_redistribution_files_only</param.files.only>
+    <param.output>${PROJECT_ROOT}\MiniVIE\for_redistribution</param.output>
+    <param.logdir>${PROJECT_ROOT}\MiniVIE</param.logdir>
+    <param.enable.clean.build>false</param.enable.clean.build>
+    <param.user.defined.mcr.options />
+    <param.target.type>subtarget.standalone</param.target.type>
+    <param.support.packages />
+    <param.web.mcr>true</param.web.mcr>
+    <param.package.mcr>false</param.package.mcr>
+    <param.no.mcr>false</param.no.mcr>
+    <param.web.mcr.name>MiniVieInstaller_web</param.web.mcr.name>
+    <param.package.mcr.name>MiniVieInstaller_mcr</param.package.mcr.name>
+    <param.no.mcr.name>MyAppInstaller_app</param.no.mcr.name>
+    <param.windows.command.prompt>true</param.windows.command.prompt>
+    <param.create.log>true</param.create.log>
+    <param.log.file>MiniVIE_Runtime_Log.txt</param.log.file>
+    <param.native.matlab>false</param.native.matlab>
+    <param.checkbox>false</param.checkbox>
+    <param.example />
+    <param.help.text>Syntax 
+	  -? 
+	 
+ Input Arguments 
+	 -?  print help on how to use the application 
+	 input arguments</param.help.text>
+    <unset>
+      <param.guid />
+      <param.installpath.combo />
+      <param.install.notes />
+      <param.target.install.notes />
+      <param.intermediate />
+      <param.files.only />
+      <param.output />
+      <param.logdir />
+      <param.enable.clean.build />
+      <param.user.defined.mcr.options />
+      <param.target.type />
+      <param.support.packages />
+      <param.web.mcr />
+      <param.package.mcr />
+      <param.no.mcr />
+      <param.no.mcr.name />
+      <param.windows.command.prompt />
+      <param.native.matlab />
+      <param.checkbox />
+      <param.example />
+    </unset>
+    <fileset.main>
+      <file>C:\git\minivie\MiniVIE.m</file>
+    </fileset.main>
+    <fileset.resources>
+      <file>C:\git\minivie\Utilities\lspb_minivie.m</file>
+    </fileset.resources>
+    <fileset.package />
+    <fileset.depfun>
+      <file>C:\git\minivie\+Common\DataBuffer.m</file>
+      <file>C:\git\minivie\+Common\DataEmitter.m</file>
+      <file>C:\git\minivie\+Common\DataSink.m</file>
+      <file>C:\git\minivie\+Common\MiniVieObj.m</file>
+      <file>C:\git\minivie\+Common\MiniViePresentation.m</file>
+      <file>C:\git\minivie\+Controls\ArmStateModel.m</file>
+      <file>C:\git\minivie\+Controls\GraspAngles.m</file>
+      <file>C:\git\minivie\+Controls\graspInterpolation.m</file>
+      <file>C:\git\minivie\+Controls\GraspTypes.m</file>
+      <file>C:\git\minivie\+DataAnalysis\Assessments.m</file>
+      <file>C:\git\minivie\+DataAnalysis\ParsePythonData.m</file>
+      <file>C:\git\minivie\+Db\MiniVieDb.m</file>
+      <file>C:\git\minivie\+Db\MplDb.m</file>
+      <file>C:\git\minivie\+Db\Record.m</file>
+      <file>C:\git\minivie\+GUIs\guiChannelSelect.m</file>
+      <file>C:\git\minivie\+GUIs\guiClassifierChannels.m</file>
+      <file>C:\git\minivie\+GUIs\guiGainAdjust.m</file>
+      <file>C:\git\minivie\+GUIs\guiLimitsAdjust.m</file>
+      <file>C:\git\minivie\+GUIs\guiPlotPca.m</file>
+      <file>C:\git\minivie\+GUIs\guiRocEditor.m</file>
+      <file>C:\git\minivie\+GUIs\guiSignalViewer.m</file>
+      <file>C:\git\minivie\+GUIs\guiTargetAchievementControl.m</file>
+      <file>C:\git\minivie\+GUIs\guiTargetAchievementControlMulti.m</file>
+      <file>C:\git\minivie\+GUIs\widgetSlider.m</file>
+      <file>C:\git\minivie\+GUIs\widgetStripChart.m</file>
+      <file>C:\git\minivie\+Inputs\@EmgSimulator\EmgSimulator.m</file>
+      <file>C:\git\minivie\+Inputs\ConstraintFilter.m</file>
+      <file>C:\git\minivie\+Inputs\CpcHeadstage.m</file>
+      <file>C:\git\minivie\+Inputs\CpchSerial.m</file>
+      <file>C:\git\minivie\+Inputs\DaqHwDevice.m</file>
+      <file>C:\git\minivie\+Inputs\DaqHwSession.m</file>
+      <file>C:\git\minivie\+Inputs\Filter.m</file>
+      <file>C:\git\minivie\+Inputs\HighPass.m</file>
+      <file>C:\git\minivie\+Inputs\IntanUdp.m</file>
+      <file>C:\git\minivie\+Inputs\LowPass.m</file>
+      <file>C:\git\minivie\+Inputs\MinLimitFilter.m</file>
+      <file>C:\git\minivie\+Inputs\MyoUdp.m</file>
+      <file>C:\git\minivie\+Inputs\NfuInput.m</file>
+      <file>C:\git\minivie\+Inputs\Notch.m</file>
+      <file>C:\git\minivie\+Inputs\OpenBciChipKit.m</file>
+      <file>C:\git\minivie\+Inputs\SignalInput.m</file>
+      <file>C:\git\minivie\+Inputs\SignalSimulator.m</file>
+      <file>C:\git\minivie\+Inputs\UdpDevice.m</file>
+      <file>C:\git\minivie\+MPL\EndpointController.m</file>
+      <file>C:\git\minivie\+MPL\EnumArm.m</file>
+      <file>C:\git\minivie\+MPL\GraspConverter.m</file>
+      <file>C:\git\minivie\+MPL\MplNfuScenario.m</file>
+      <file>C:\git\minivie\+MPL\MplNfuSink.m</file>
+      <file>C:\git\minivie\+MPL\MplSink.m</file>
+      <file>C:\git\minivie\+MPL\MplUnity.m</file>
+      <file>C:\git\minivie\+MPL\MplUnitySink.m</file>
+      <file>C:\git\minivie\+MPL\MplVulcanX.m</file>
+      <file>C:\git\minivie\+MPL\MplVulcanXSink.m</file>
+      <file>C:\git\minivie\+MPL\MudCommandEncoder.m</file>
+      <file>C:\git\minivie\+MPL\NfuUdp.m</file>
+      <file>C:\git\minivie\+MPL\RocTable.m</file>
+      <file>C:\git\minivie\+PatternRecognition\AdaptiveTrainingInterface.m</file>
+      <file>C:\git\minivie\+PatternRecognition\BarTrainer.m</file>
+      <file>C:\git\minivie\+PatternRecognition\ChangeClassEventData.m</file>
+      <file>C:\git\minivie\+PatternRecognition\GuiTrainer.m</file>
+      <file>C:\git\minivie\+PatternRecognition\JoystickTrainer.m</file>
+      <file>C:\git\minivie\+PatternRecognition\MiniGuitarHero.m</file>
+      <file>C:\git\minivie\+PatternRecognition\MotionTrainer.m</file>
+      <file>C:\git\minivie\+PatternRecognition\SimpleTrainer.m</file>
+      <file>C:\git\minivie\+PatternRecognition\TrainingData.m</file>
+      <file>C:\git\minivie\+PatternRecognition\TrainingInterface.m</file>
+      <file>C:\git\minivie\+PatternRecognition\TrainingInterfaceBase.m</file>
+      <file>C:\git\minivie\+PatternRecognition\TrainingManager.m</file>
+      <file>C:\git\minivie\+PatternRecognition\VMplTrainer.m</file>
+      <file>C:\git\minivie\+Presentation\+AirGuitarHero\AirGuitarHeroBase.m</file>
+      <file>C:\git\minivie\+Presentation\+AirGuitarHero\AirGuitarHeroEmg.m</file>
+      <file>C:\git\minivie\+Presentation\+AirGuitarHero\HwLinesEnum.m</file>
+      <file>C:\git\minivie\+Presentation\+AirGuitarHero\NoteDetector.m</file>
+      <file>C:\git\minivie\+Presentation\@MiniV\MiniV.m</file>
+      <file>C:\git\minivie\+Presentation\@MiniV\private\ArmControl.m</file>
+      <file>C:\git\minivie\+Presentation\@MiniV\private\f_KChain_IsectNodes.m</file>
+      <file>C:\git\minivie\+Presentation\@MiniV\private\f_KChain_IsectNodes2.m</file>
+      <file>C:\git\minivie\+Presentation\@MiniV\private\f_KChain_List.m</file>
+      <file>C:\git\minivie\+Presentation\@MiniV\private\f_KChain_Load.m</file>
+      <file>C:\git\minivie\+Presentation\@MiniV\private\f_KChain_Redraw.m</file>
+      <file>C:\git\minivie\+Presentation\@MiniV\private\f_KChain_Save.m</file>
+      <file>C:\git\minivie\+Presentation\@MiniV\private\f_magnitude.m</file>
+      <file>C:\git\minivie\+Presentation\@MiniV\private\f_make_R.m</file>
+      <file>C:\git\minivie\+Presentation\@MiniV\private\f_normalize.m</file>
+      <file>C:\git\minivie\+Presentation\@MiniV\private\f_plot3.m</file>
+      <file>C:\git\minivie\+Presentation\@MiniV\private\f_plot_triad.m</file>
+      <file>C:\git\minivie\+Presentation\@MiniV\private\f_read_stl.m</file>
+      <file>C:\git\minivie\+Presentation\@MiniV\private\f_SetJointAngle.m</file>
+      <file>C:\git\minivie\+Presentation\@MiniV\private\f_SetupBodyKinematics.m</file>
+      <file>C:\git\minivie\+Presentation\@MiniV\private\f_SetupGraphicsChain.m</file>
+      <file>C:\git\minivie\+Presentation\@MiniV\private\f_SetupKinematics.m</file>
+      <file>C:\git\minivie\+Presentation\@MiniV\private\f_SetupMacros.m</file>
+      <file>C:\git\minivie\+Presentation\@MiniV\private\f_show_surface.m</file>
+      <file>C:\git\minivie\+Presentation\@MiniV\private\f_stlMesh_to_surface.m</file>
+      <file>C:\git\minivie\+Presentation\@MiniV\private\f_transform.m</file>
+      <file>C:\git\minivie\+Presentation\@MiniV\private\f_transform_model.m</file>
+      <file>C:\git\minivie\+Presentation\@MiniV\private\f_update_triad.m</file>
+      <file>C:\git\minivie\+Presentation\@MiniV\private\f_UpdateHandPosition.m</file>
+      <file>C:\git\minivie\+Presentation\@MiniV\private\f_UpdateJointAngle.m</file>
+      <file>C:\git\minivie\+Presentation\@MiniV\private\run_demo.m</file>
+      <file>C:\git\minivie\+Presentation\BreakoutSink.m</file>
+      <file>C:\git\minivie\+Presentation\MiniBreakout.m</file>
+      <file>C:\git\minivie\+Presentation\OdeSink.m</file>
+      <file>C:\git\minivie\+Scenarios\+MSMS_ADL\MotionFile.m</file>
+      <file>C:\git\minivie\+Scenarios\+MSMS_ADL\MSMS_WRAMC_Model.m</file>
+      <file>C:\git\minivie\+Scenarios\+MSMS_ADL\MsmsDisplayScenario.m</file>
+      <file>C:\git\minivie\+Scenarios\MiniVDisplayScenario.m</file>
+      <file>C:\git\minivie\+Scenarios\MsmsTasks.m</file>
+      <file>C:\git\minivie\+Scenarios\OnlineRetrainer.m</file>
+      <file>C:\git\minivie\+Scenarios\ScenarioBase.m</file>
+      <file>C:\git\minivie\+SignalAnalysis\Classifier.m</file>
+      <file>C:\git\minivie\+SignalAnalysis\DiscriminantAnalysis.m</file>
+      <file>C:\git\minivie\+SignalAnalysis\Lda.m</file>
+      <file>C:\git\minivie\+SignalAnalysis\private\eml_max.m</file>
+      <file>C:\git\minivie\+SignalAnalysis\private\svmpredict.mexw64</file>
+      <file>C:\git\minivie\+SignalAnalysis\private\svmtrain.mexw64</file>
+      <file>C:\git\minivie\+SignalAnalysis\Svm.m</file>
+      <file>C:\git\minivie\+SignalAnalysis\SvmStatTlbx.m</file>
+      <file>C:\git\minivie\ThirdParty\ExportToPPTX\exportToPPTX.m</file>
+      <file>C:\git\minivie\ThirdParty\jsonlab\jsonopt.m</file>
+      <file>C:\git\minivie\ThirdParty\jsonlab\loadjson.m</file>
+      <file>C:\git\minivie\ThirdParty\jsonlab\mergestruct.m</file>
+      <file>C:\git\minivie\ThirdParty\jsonlab\savejson.m</file>
+      <file>C:\git\minivie\ThirdParty\jsonlab\struct2jdata.m</file>
+      <file>C:\git\minivie\ThirdParty\jsonlab\varargin2struct.m</file>
+      <file>C:\git\minivie\ThirdParty\rdir.m</file>
+      <file>C:\git\minivie\ThirdParty\strfndw.m</file>
+      <file>C:\git\minivie\ThirdParty\WinOnTop.m</file>
+      <file>C:\git\minivie\Utilities\action_bus_definition.m</file>
+      <file>C:\git\minivie\Utilities\action_bus_enum.m</file>
+      <file>C:\git\minivie\Utilities\BluetoothTactor.m</file>
+      <file>C:\git\minivie\Utilities\BluetoothTactor_UDP.m</file>
+      <file>C:\git\minivie\Utilities\computePcaContour.m</file>
+      <file>C:\git\minivie\Utilities\distinguishable_colors.m</file>
+      <file>C:\git\minivie\Utilities\distinguishable_colors_file_exchange.m</file>
+      <file>C:\git\minivie\Utilities\extract_mpl_percepts_v2.m</file>
+      <file>C:\git\minivie\Utilities\feature_extract.m</file>
+      <file>C:\git\minivie\Utilities\getIntent.m</file>
+      <file>C:\git\minivie\Utilities\guiClassifierAssessment.fig</file>
+      <file>C:\git\minivie\Utilities\guiClassifierAssessment.m</file>
+      <file>C:\git\minivie\Utilities\HapticAlgorithm.m</file>
+      <file>C:\git\minivie\Utilities\JoyMEX.m</file>
+      <file>C:\git\minivie\Utilities\JoyMEX.mexw64</file>
+      <file>C:\git\minivie\Utilities\JoyMexClass.m</file>
+      <file>C:\git\minivie\Utilities\LinAlg.m</file>
+      <file>C:\git\minivie\Utilities\PlotUtils.m</file>
+      <file>C:\git\minivie\Utilities\pnet.m</file>
+      <file>C:\git\minivie\Utilities\pnet.mexw64</file>
+      <file>C:\git\minivie\Utilities\PnetClass.m</file>
+      <file>C:\git\minivie\Utilities\pos.m</file>
+      <file>C:\git\minivie\Utilities\screencapture.m</file>
+      <file>C:\git\minivie\Utilities\standardClasses.m</file>
+      <file>C:\git\minivie\Utilities\StartStopForm.m</file>
+      <file>C:\git\minivie\Utilities\TactorUdp.m</file>
+      <file>C:\git\minivie\Utilities\TrainingDataAnalysis.m</file>
+      <file>C:\git\minivie\Utilities\UiTools.m</file>
+      <file>C:\git\minivie\Utilities\UserConfig.m</file>
+      <file>C:\git\minivie\Utilities\UserDrivenTrainingInterface.m</file>
+      <file>C:\git\minivie\Utilities\ViePlant.m</file>
+    </fileset.depfun>
+    <build-deliverables>
+      <file location="${PROJECT_ROOT}\MiniVIE\for_testing" name="splash.png" optional="false">C:\git\minivie\Deploy\MiniVIE\for_testing\splash.png</file>
+      <file location="${PROJECT_ROOT}\MiniVIE\for_testing" name="MiniVIE.exe" optional="false">C:\git\minivie\Deploy\MiniVIE\for_testing\MiniVIE.exe</file>
+      <file location="${PROJECT_ROOT}\MiniVIE\for_testing" name="readme.txt" optional="true">C:\git\minivie\Deploy\MiniVIE\for_testing\readme.txt</file>
+    </build-deliverables>
+    <workflow />
+    <matlab>
+      <root>C:\Program Files\MATLAB\R2019a</root>
+      <toolboxes>
+        <toolbox name="embeddedcoder" />
+        <toolbox name="gpucoder" />
+        <toolbox name="fixedpoint" />
+        <toolbox name="matlabhdlcoder" />
+        <toolbox name="neuralnetwork" />
+      </toolboxes>
+      <toolbox>
+        <embeddedcoder>
+          <enabled>true</enabled>
+        </embeddedcoder>
+      </toolbox>
+      <toolbox>
+        <gpucoder>
+          <enabled>true</enabled>
+        </gpucoder>
+      </toolbox>
+      <toolbox>
+        <fixedpoint>
+          <enabled>true</enabled>
+        </fixedpoint>
+      </toolbox>
+      <toolbox>
+        <matlabhdlcoder>
+          <enabled>true</enabled>
+        </matlabhdlcoder>
+      </toolbox>
+      <toolbox>
+        <neuralnetwork>
+          <enabled>true</enabled>
+        </neuralnetwork>
+      </toolbox>
+    </matlab>
+    <platform>
+      <unix>false</unix>
+      <mac>false</mac>
+      <windows>true</windows>
+      <win2k>false</win2k>
+      <winxp>false</winxp>
+      <vista>false</vista>
+      <linux>false</linux>
+      <solaris>false</solaris>
+      <osver>10.0</osver>
+      <os32>false</os32>
+      <os64>true</os64>
+      <arch>win64</arch>
+      <matlab>true</matlab>
+    </platform>
+  </configuration>
+</deployment-project>
