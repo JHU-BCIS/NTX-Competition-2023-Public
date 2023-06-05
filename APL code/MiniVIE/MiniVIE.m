@@ -333,6 +333,7 @@ classdef MiniVIE < Common.MiniVieObj
             end
 
         end
+        
         function saveTxt(obj)
             % save the LDA weights, centers, thresholds and TrainingData class names to text files
 
@@ -349,7 +350,19 @@ classdef MiniVIE < Common.MiniVieObj
                 fprintf('There was a problem saving one or many python txt file(s).\n');
             end
         end
+        %output data
+        function outputData(obj)
+            a = obj.SignalSource;
+            myData = a.getData();
+            disp(myData);
+            %findme
+            x = datetime;
+            x.Format = 'hh:mm:ss.SSS';
+            %
+            disp(x)
 
+        end
+        %output data ends
         function close(obj)
 
             if ~isempty(obj.SignalViewer)
@@ -438,6 +451,7 @@ classdef MiniVIE < Common.MiniVieObj
                         h = Inputs.OpenBciChipKit('COM3');
                     case 'ThalmicLabs MyoUdp'
                         h = Inputs.MyoUdp.getInstance();
+                        %disp("thalmic labs");
                         %h.addfilter(Inputs.MAV());
                     case 'MyoBtle'
                         h = Inputs.MyoBtle();
@@ -1171,6 +1185,7 @@ classdef MiniVIE < Common.MiniVieObj
 
     end
     methods (Static = true)
+        
         function createShortcuts(suffix)
             % Create MiniVIE shortcuts
             % This function adds shortcuts for useful tools in working with
