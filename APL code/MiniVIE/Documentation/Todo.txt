@@ -1,0 +1,16 @@
+To do:
+
+- handle case where new classes are added to existing training data
+   - use enums to identify classes
+   - verify confusion matrix updated properly
+
+- allow save joint limits
+- allow update of active channels
+- remove active channels from temp file for bimanual
+
+% Training data management
+
+Within MiniVIE
+Training Data is conditionally initialized when classifier selected (if isempty)
+(Load function not available until classifier selected)
+i.e. training data not reset on classifier change
