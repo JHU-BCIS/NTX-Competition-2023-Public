@@ -350,16 +350,19 @@ classdef MiniVIE < Common.MiniVieObj
                 fprintf('There was a problem saving one or many python txt file(s).\n');
             end
         end
+
+        %findme
         %output data
-        function outputData(obj)
+        function data = outputData(obj)
+            % obj is expected to be a MiniVIE object
             a = obj.SignalSource;
-            myData = a.getData();
-            disp(myData);
-            %findme
-            x = datetime;
-            x.Format = 'hh:mm:ss.SSS';
-            %
-            disp(x)
+            currentData = a.getData(1,1:8); % gets the latest sample from the buffer and the first 8 channels of the EMG
+            
+            time = datetime; % gets the current time when outputData() is called
+            time.Format = 'hh:mm:ss.SSS'; % formatted to include milliseconds
+            
+            data = timetable(time, currentData); % combines the time stamp and latest EMG recording into a time table
+            disp(data);
 
         end
         %output data ends

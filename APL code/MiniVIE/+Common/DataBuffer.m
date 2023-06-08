@@ -63,6 +63,7 @@ classdef DataBuffer < handle
             end
         end
         
+        %findme
         function data = getData(obj,numSamples,idxChannel)
             %data = getData(obj,numSamples,idxChannel)
             % get data from buffer.  most recent sample will be at (end)
