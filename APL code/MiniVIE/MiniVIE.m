@@ -351,21 +351,6 @@ classdef MiniVIE < Common.MiniVieObj
             end
         end
 
-        %findme
-        %output data
-        function data = outputData(obj)
-            % obj is expected to be a MiniVIE object
-            a = obj.SignalSource;
-            currentData = a.getData(1,1:8); % gets the latest sample from the buffer and the first 8 channels of the EMG
-            
-            time = datetime; % gets the current time when outputData() is called
-            time.Format = 'hh:mm:ss.SSS'; % formatted to include milliseconds
-            
-            data = timetable(time, currentData); % combines the time stamp and latest EMG recording into a time table
-            disp(data);
-
-        end
-        %output data ends
         function close(obj)
 
             if ~isempty(obj.SignalViewer)
@@ -463,9 +448,6 @@ classdef MiniVIE < Common.MiniVieObj
                         % None
                         h = [];
                 end
-
-                % findme
-                % writematrix(h,"Input.csv")
 
                 if isempty(h)
                     % Disable viewer
@@ -854,13 +836,6 @@ classdef MiniVIE < Common.MiniVieObj
                         h = [];
                 end
 
-                % Findme
-                % format shortg
-                % c = clock
-                % c = c(4)* 60 * 60 + c(5)* 60 + c(6)
-                % together = [c h]
-
-
                 if isempty(h)
                     % Disable buttons
                     set(obj.hg.PresentationButtons(:),'Enable','off');
@@ -921,7 +896,66 @@ classdef MiniVIE < Common.MiniVieObj
                 fullFilename = fullfile(PathName,FileName);
             end
         end
+
+        %findme1
+        %output current data point with time stamp
+        function data = outputCurrentData(obj)
+            % obj is expected to be a MiniVIE object
+            a = obj.SignalSource;
+            currentData = a.getData(1,1:8); % gets the latest sample from the buffer and the first 8 channels of the EMG
+            
+            time = datetime; % gets the current time when outputData() is called
+            time.Format = 'hh:mm:ss.SSS'; % formatted to include milliseconds
+            
+            data = timetable(time, currentData); % combines the time stamp and latest EMG recording into a time table
+            disp(data);
+        end
+        
+        %findme2
+        %output a series of data points with time stamps in csv format
+        %run by calling this function in command line with "outputSeriesData(obj)"
+        function series = outputSeriesData(obj) 
+        %apparently Matlab avoids making a copy of the input variable unless it's modified, so this should be equivalent to passing by reference.
+            
+            series = timetable(); 
+            
+            % Create the main window
+            fig = uifigure('Name', 'Series Data Collection', 'Position', [100 100 300 150]);
+
+            % Calculate button position
+            btnWidth = 100;
+            btnHeight = 22;
+            btnX = (fig.Position(3) - btnWidth) / 2;
+            btnY = (fig.Position(4) - btnHeight) / 2;
+            % Create the button
+            btn = uibutton(fig, 'Text', 'Stop', 'Position', [btnX btnY btnWidth btnHeight]);
+
+            running = true;
+
+            % Button callback function
+            btn.ButtonPushedFcn = @(~,~) stopLoopCallback();
+
+            % Loop while the stopLoop condition is false
+            while running
+                currentData = outputCurrentData(obj); %get current data point
+                series = [series; currentData]; %concatenate current data point to the series
+                drawnow; % Update the GUI and process callbacks
+            end
+
+            delete(fig); % Clean up
+
+            % Nested function to handle button callback
+            function stopLoopCallback()
+                running = false;
+                currentTime = datetime;
+                formattedTime = datestr(currentTime, 'yyyymmdd_HHMMSS');
+                filename = strcat('data_series_', formattedTime, '.csv');
+                writetimetable(series, filename);
+            end
+        end
+
     end
+
     methods (Access = private)
         function pbSignalView(obj)
 
@@ -1355,6 +1389,7 @@ classdef MiniVIE < Common.MiniVieObj
             % Start the MINIVIE
             obj = MiniVIE;
         end
+        
     end
 end
 
