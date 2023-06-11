@@ -16,7 +16,7 @@ from datetime import datetime
 import pandas as pd
 
 now = datetime.now()
-n = now.strftime('%y-%m-%d_%H:%M:%S.%f')[:-3]
+n = now.strftime('%y-%m-%d_%H-%M-%S.%f')[:-3]
 csv_name = "mediapipe_"+n+".csv"
 pd.DataFrame({}).to_csv(csv_name)
 
@@ -216,12 +216,22 @@ def draw_finger_angles(image, results, joint_list):
     # Loop through hands
     for hand in results.multi_hand_landmarks:
         #Loop through joint sets 
-
+        angles = []
+        pos = []
         for joint in joint_list:
             a = np.array([hand.landmark[joint[0]].x, hand.landmark[joint[0]].y]) # First coord
             b = np.array([hand.landmark[joint[1]].x, hand.landmark[joint[1]].y]) # Second coord
             c = np.array([hand.landmark[joint[2]].x, hand.landmark[joint[2]].y]) # Third coord
-            
+            pos.append([a, b, c])
+    
+        now = datetime.now()
+        n = now.strftime('%y/%m/%d %H:%M:%S.%f')[:-3]
+        
+        for p in pos:
+            a = p[0]
+            b = p[1]
+            c = p[2]
+        
             radians = np.arctan2(c[1] - b[1], c[0]-b[0]) - np.arctan2(a[1]-b[1], a[0]-b[0])
             angle = np.abs(radians*180.0/np.pi)
             
@@ -234,10 +244,6 @@ def draw_finger_angles(image, results, joint_list):
             #current_time = time.strftime("%H:%M:%S", t)
             #today = date.today()
             #d = today.strftime("%m/%d/%y")
-            now = datetime.now()
-            n = now.strftime('%y/%m/%d %H:%M:%S.%f')[:-3]
-            tempdata = []
-            tempdata.append(n)
             """
             No you don't need hand landmark data --Audrey
             """
@@ -245,8 +251,12 @@ def draw_finger_angles(image, results, joint_list):
             #print(hand)
             #print("hand landamark data ends")
             #tempdata.append(joint)
+            angles.append(angle)
+            
+        tempdata = []
+        tempdata.append(n)
+        for angle in angles:
             tempdata.append(angle)
-        
         data.append(tempdata)
         print(tempdata)
     return image
