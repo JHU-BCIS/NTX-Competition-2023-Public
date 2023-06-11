@@ -203,19 +203,20 @@ cv2.destroyAllWindows()
 
 from matplotlib import pyplot as plt
 
-header = ['timestamp', 'joints', 'joint angle']
+header = ['timestamp', 'thumb', 'index', 'middle', 'ring', 'little']
 data = []
 
 '''
 Modify this joint list to add/delete joint angle choices
 '''
-joint_list = [[4,3,2], [3,2,1], [2,1,0], [8,7,6], [12,11,10], [16,15,14], [20,19,18]]
-joint_list[3]
+joint_list = [[4,2,0], [8,5,0], [12,9,0], [16,13,0], [20,17,0]]
+#joint_list[3]
 def draw_finger_angles(image, results, joint_list):
     
     # Loop through hands
     for hand in results.multi_hand_landmarks:
         #Loop through joint sets 
+
         for joint in joint_list:
             a = np.array([hand.landmark[joint[0]].x, hand.landmark[joint[0]].y]) # First coord
             b = np.array([hand.landmark[joint[1]].x, hand.landmark[joint[1]].y]) # Second coord
@@ -243,9 +244,11 @@ def draw_finger_angles(image, results, joint_list):
             #print("hand landamark data starts")
             #print(hand)
             #print("hand landamark data ends")
-            tempdata.append(joint)
+            #tempdata.append(joint)
             tempdata.append(angle)
-            data.append(tempdata)
+        
+        data.append(tempdata)
+        print(tempdata)
     return image
 results.multi_hand_landmarks
 test_image = draw_finger_angles(image, results, joint_list)
