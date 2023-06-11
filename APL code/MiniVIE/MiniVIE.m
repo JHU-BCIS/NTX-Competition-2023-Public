@@ -380,7 +380,7 @@ classdef MiniVIE < Common.MiniVieObj
             try
                 % get existing source
                 h = obj.SignalSource;
-                % in there's an old one, try to close it
+                % in theres an old one, try to close it
                 if ~isempty(h)
                     try %#ok<TRYNC>
                         close(h);
@@ -1139,7 +1139,7 @@ classdef MiniVIE < Common.MiniVieObj
             % Note if the roc changes and is different than the one in the
             % Presentation then the user will be prompted to update
             %
-            % Note this won't be the case if a Scenario does not yet exist
+            % Note this wont be the case if a Scenario does not yet exist
 
             % Ensure that if a scenario exists that it is not running
             drawnow
