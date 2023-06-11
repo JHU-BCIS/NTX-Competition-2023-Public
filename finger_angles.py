@@ -3,6 +3,7 @@
 Spyder Editor
 
 This is a temporary script file.
+(Not anymore lol) -- Audrey
 """
 import mediapipe as mp
 import cv2
