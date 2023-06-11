@@ -916,7 +916,7 @@ classdef MiniVIE < Common.MiniVieObj
         %output a series of data points with time stamps in csv format
         %run by calling this function in command line with "outputSeriesData(obj)"
         function series = outputSeriesData(obj) 
-        %apparently Matlab avoids making a copy of the input variable unless it's modified, so this should be equivalent to passing by reference.
+        %apparently Matlab avoids making a copy of the input variable unless its modified, so this should be equivalent to passing by reference.
             
             series = timetable(); 
             
