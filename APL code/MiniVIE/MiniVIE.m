@@ -911,7 +911,6 @@ classdef MiniVIE < Common.MiniVieObj
             disp(data);
         end
         
-        %Terry was here
         %findme2
         %output a series of data points with time stamps in csv format
         %run by calling this function in command line with "outputSeriesData(obj)"
