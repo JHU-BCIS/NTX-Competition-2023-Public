@@ -28,13 +28,19 @@ mp_hands = mp.solutions.hands
 Right now, you can use 0 as the parameter as long as your default camera is not occupied
 However, if that changes, use these lines of codes instead.
 
-E.g. you want to use camera no.2
+E.g. if you want to use defalt camera
+cap = cv2.VideoCapture(0)
+
+E.g. if you want to use camera no.2
 index = 2 + cv2.CAP_MSMF
 cap = cv2.VideoCapture(index)
 
 Remember, you have to change all occurrences of this line! --Audrey
 """
-cap = cv2.VideoCapture(0)
+
+#modification made for Brian's Laptop
+index = 2 + cv2.CAP_MSMF
+cap = cv2.VideoCapture(index)
 
 with mp_hands.Hands(min_detection_confidence=0.8, min_tracking_confidence=0.5) as hands: 
     while cap.isOpened():
@@ -82,7 +88,9 @@ cv2.destroyAllWindows()
 
 #os.mkdir('Output Images')
 
-cap = cv2.VideoCapture(0)
+#modification made for Brian's Laptop
+index = 2 + cv2.CAP_MSMF
+cap = cv2.VideoCapture(index)
 
 with mp_hands.Hands(min_detection_confidence=0.8, min_tracking_confidence=0.5) as hands: 
     while cap.isOpened():
@@ -152,7 +160,9 @@ def get_label(index, hand, results):
 
 get_label(num, hand, results)
 
-cap = cv2.VideoCapture(0)
+#modification made for Brian's Laptop
+index = 2 + cv2.CAP_MSMF
+cap = cv2.VideoCapture(index)
 
 with mp_hands.Hands(min_detection_confidence=0.8, min_tracking_confidence=0.5) as hands: 
     while cap.isOpened():
@@ -264,7 +274,9 @@ def draw_finger_angles(image, results, joint_list):
 results.multi_hand_landmarks
 test_image = draw_finger_angles(image, results, joint_list)
 
-cap = cv2.VideoCapture(0)
+#modification made for Brian's Laptop
+index = 2 + cv2.CAP_MSMF
+cap = cv2.VideoCapture(index)
 
 with mp_hands.Hands(min_detection_confidence=0.8, min_tracking_confidence=0.5) as hands: 
     while cap.isOpened():
