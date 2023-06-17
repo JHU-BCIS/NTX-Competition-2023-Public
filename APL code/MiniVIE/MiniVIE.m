@@ -902,11 +902,12 @@ classdef MiniVIE < Common.MiniVieObj
         function data = outputCurrentData(obj)
             % obj is expected to be a MiniVIE object
             a = obj.SignalSource;
-            currentData = a.getData(1,1:8); % gets the latest sample from the buffer and the first 8 channels of the EMG
             
-            time = datetime; % gets the current time when outputData() is called
+            time = datetime; % gets the current time when outputCurrentData() is called
             time.Format = 'hh:mm:ss.SSS'; % formatted to include milliseconds
             
+            currentData = a.getFilteredData(1,1:8); % gets the latest filtered sample from the buffer and the first 8 channels of the EMG
+
             data = timetable(time, currentData); % combines the time stamp and latest EMG recording into a time table
             disp(data);
         end
@@ -916,7 +917,7 @@ classdef MiniVIE < Common.MiniVieObj
         %run by calling this function in command line with "outputSeriesData(obj)"
         function series = outputSeriesData(obj) 
         %apparently Matlab avoids making a copy of the input variable unless its modified, so this should be equivalent to passing by reference.
-            
+
             series = timetable(); 
             
             % Create the main window
