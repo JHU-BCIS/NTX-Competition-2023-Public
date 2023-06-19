@@ -16,10 +16,11 @@ from datetime import date
 from datetime import datetime
 import pandas as pd
 
-now = datetime.now()
-n = now.strftime('%y-%m-%d_%H-%M-%S.%f')[:-3]
-csv_name = "mediapipe_"+n+".csv"
-pd.DataFrame({}).to_csv(csv_name)
+
+#now = datetime.now()
+#n = now.strftime('%y-%m-%d_%H-%M-%S.%f')[:-3]
+#csv_name = "mediapipe_"+n+".csv"
+#pd.DataFrame({}).to_csv(csv_name)
 
 mp_drawing = mp.solutions.drawing_utils
 mp_hands = mp.solutions.hands
@@ -39,9 +40,13 @@ Remember, you have to change all occurrences of this line! --Audrey
 """
 
 #modification made for Brian's Laptop
-index = 2 + cv2.CAP_MSMF
+index = 1 + cv2.CAP_MSMF
 cap = cv2.VideoCapture(index)
 
+if(cap.isOpened()):
+    print("open")
+else:
+    print("not open")
 with mp_hands.Hands(min_detection_confidence=0.8, min_tracking_confidence=0.5) as hands: 
     while cap.isOpened():
         ret, frame = cap.read()
@@ -89,7 +94,7 @@ cv2.destroyAllWindows()
 #os.mkdir('Output Images')
 
 #modification made for Brian's Laptop
-index = 2 + cv2.CAP_MSMF
+index = 1+ cv2.CAP_MSMF
 cap = cv2.VideoCapture(index)
 
 with mp_hands.Hands(min_detection_confidence=0.8, min_tracking_confidence=0.5) as hands: 
@@ -161,7 +166,7 @@ def get_label(index, hand, results):
 get_label(num, hand, results)
 
 #modification made for Brian's Laptop
-index = 2 + cv2.CAP_MSMF
+index = 1 + cv2.CAP_MSMF
 cap = cv2.VideoCapture(index)
 
 with mp_hands.Hands(min_detection_confidence=0.8, min_tracking_confidence=0.5) as hands: 
@@ -275,8 +280,13 @@ results.multi_hand_landmarks
 test_image = draw_finger_angles(image, results, joint_list)
 
 #modification made for Brian's Laptop
-index = 2 + cv2.CAP_MSMF
+index = 1 + cv2.CAP_MSMF
 cap = cv2.VideoCapture(index)
+
+now = datetime.now()
+n = now.strftime('%y-%m-%d_%H-%M-%S.%f')[:-3]
+new_name = "mediapipe_"+n+".csv"
+pd.DataFrame({}).to_csv(new_name)
 
 with mp_hands.Hands(min_detection_confidence=0.8, min_tracking_confidence=0.5) as hands: 
     while cap.isOpened():
@@ -323,8 +333,10 @@ with mp_hands.Hands(min_detection_confidence=0.8, min_tracking_confidence=0.5) a
         #cv2.imwrite(os.path.join('Output Images', '{}.jpg'.format(uuid.uuid1())), image)
         cv2.imshow('Hand Tracking', image)
 
+        
+
         if cv2.waitKey(10) & 0xFF == ord('q'):
-            with open(csv_name, mode='r+', encoding='UTF8', newline='') as f:
+            with open(new_name, mode='r+', encoding='UTF8', newline='') as f:
                 writer = csv.writer(f)
 
                 # write the header
