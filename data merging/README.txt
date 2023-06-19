@@ -8,6 +8,8 @@ Run them in this order:
 - mediapipetsconversion
 - stamp_bridge
 - step_function
+- postprocessing
+
 
 In MATLAB, at the top of the first two scripts, you can add
-the mediapipe or EMG data file on the first line.
+the name of the EMG or mediapipe data file on the first line.
