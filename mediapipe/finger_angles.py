@@ -3,6 +3,7 @@
 Spyder Editor
 
 This is a temporary script file.
+(Not anymore lol) -- Audrey
 """
 import mediapipe as mp
 import cv2
@@ -28,7 +29,10 @@ mp_hands = mp.solutions.hands
 Right now, you can use 0 as the parameter as long as your default camera is not occupied
 However, if that changes, use these lines of codes instead.
 
-E.g. you want to use camera no.2
+E.g. if you want to use defalt camera
+cap = cv2.VideoCapture(0)
+
+E.g. if you want to use camera no.2
 index = 2 + cv2.CAP_MSMF
 cap = cv2.VideoCapture(index)
 
@@ -85,7 +89,7 @@ with mp_hands.Hands(min_detection_confidence=0.8, min_tracking_confidence=0.5) a
 cap.release()
 cv2.destroyAllWindows()
 
-mp_drawing.DrawingSpec??
+#mp_drawing.DrawingSpec??
 
 #os.mkdir('Output Images')
 
@@ -215,24 +219,35 @@ cv2.destroyAllWindows()
 
 from matplotlib import pyplot as plt
 
-header = ['timestamp', 'joints', 'joint angle']
+header = ['timestamp', 'thumb', 'index', 'middle', 'ring', 'little']
 data = []
 
 '''
 Modify this joint list to add/delete joint angle choices
 '''
-joint_list = [[4,3,2], [3,2,1], [2,1,0], [8,7,6], [12,11,10], [16,15,14], [20,19,18]]
-joint_list[3]
+joint_list = [[4,2,0], [8,5,0], [12,9,0], [16,13,0], [20,17,0]]
+#joint_list[3]
 def draw_finger_angles(image, results, joint_list):
     
     # Loop through hands
     for hand in results.multi_hand_landmarks:
         #Loop through joint sets 
+        angles = []
+        pos = []
         for joint in joint_list:
             a = np.array([hand.landmark[joint[0]].x, hand.landmark[joint[0]].y]) # First coord
             b = np.array([hand.landmark[joint[1]].x, hand.landmark[joint[1]].y]) # Second coord
             c = np.array([hand.landmark[joint[2]].x, hand.landmark[joint[2]].y]) # Third coord
-            
+            pos.append([a, b, c])
+    
+        now = datetime.now()
+        n = now.strftime('%y/%m/%d %H:%M:%S.%f')[:-3]
+        
+        for p in pos:
+            a = p[0]
+            b = p[1]
+            c = p[2]
+        
             radians = np.arctan2(c[1] - b[1], c[0]-b[0]) - np.arctan2(a[1]-b[1], a[0]-b[0])
             angle = np.abs(radians*180.0/np.pi)
             
@@ -245,19 +260,21 @@ def draw_finger_angles(image, results, joint_list):
             #current_time = time.strftime("%H:%M:%S", t)
             #today = date.today()
             #d = today.strftime("%m/%d/%y")
-            now = datetime.now()
-            n = now.strftime('%y/%m/%d %H:%M:%S.%f')[:-3]
-            tempdata = []
-            tempdata.append(n)
             """
             No you don't need hand landmark data --Audrey
             """
             #print("hand landamark data starts")
             #print(hand)
             #print("hand landamark data ends")
-            tempdata.append(joint)
+            #tempdata.append(joint)
+            angles.append(angle)
+            
+        tempdata = []
+        tempdata.append(n)
+        for angle in angles:
             tempdata.append(angle)
-            data.append(tempdata)
+        data.append(tempdata)
+        print(tempdata)
     return image
 results.multi_hand_landmarks
 test_image = draw_finger_angles(image, results, joint_list)
@@ -332,4 +349,3 @@ with mp_hands.Hands(min_detection_confidence=0.8, min_tracking_confidence=0.5) a
 
 cap.release()
 cv2.destroyAllWindows()
-

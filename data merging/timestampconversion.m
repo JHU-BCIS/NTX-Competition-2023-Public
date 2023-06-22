@@ -1,4 +1,4 @@
-bigTable = readtable('EMGdata.csv');
+bigTable = readtable('data_series_20230621_231321.csv');
 times = table2cell(bigTable(:, 1));
 for i = 1:size(times)
     %convert time from duration to string and cut off hours

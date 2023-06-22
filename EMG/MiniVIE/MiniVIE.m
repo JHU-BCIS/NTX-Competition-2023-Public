@@ -950,7 +950,7 @@ classdef MiniVIE < Common.MiniVieObj
                 running = false;
                 currentTime = datetime;
                 formattedTime = datestr(currentTime, 'yyyymmdd_HHMMSS');
-                filename = strcat('data_series_', formattedTime, '.csv');
+                filename = strcat('EMG_data_', formattedTime, '.csv');
                 writetimetable(series, filename);
             end
         end
