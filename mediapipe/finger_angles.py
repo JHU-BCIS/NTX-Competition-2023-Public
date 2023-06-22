@@ -284,7 +284,7 @@ index = 1 + cv2.CAP_MSMF
 cap = cv2.VideoCapture(index)
 
 now = datetime.now()
-n = now.strftime('%y-%m-%d_%H-%M-%S.%f')[:-3]
+n = now.strftime('%y%m%d_%H%M%S')[:-3]
 new_name = "mediapipe_"+n+".csv"
 pd.DataFrame({}).to_csv(new_name)
 
