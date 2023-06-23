@@ -40,4 +40,29 @@ for i = 1:Elength
 end
 
 bigTable = renamevars(bigTable, ["Var11", "Var12", "Var13", "Var14", "Var15", "Var16"], ["New mediapipe times", "thumb", "index", "middle", "ring", "little"]);
+% smoothed out the random zeros
 
+i = 1;
+while(i < height(bigTable))
+    if(bigTable{i, 12} == 0)
+        avg = ( bigTable{i-1, 12} + bigTable{i+1, 12} ) / 2;
+        bigTable{i, 12} = avg;
+    end
+    if(bigTable{i, 13} == 0)
+        avg = ( bigTable{i-1, 13} + bigTable{i+1, 13} ) / 2;
+        bigTable{i, 13} = avg;
+    end
+    if(bigTable{i, 14} == 0)
+        avg = ( bigTable{i-1, 14} + bigTable{i+1, 14} ) / 2;
+        bigTable{i, 14} = avg;
+    end
+    if(bigTable{i, 15} == 0)
+        avg = ( bigTable{i-1, 15} + bigTable{i+1, 15} ) / 2;
+        bigTable{i, 15} = avg;
+    end
+    if(bigTable{i, 16} == 0)
+        avg = ( bigTable{i-1, 16} + bigTable{i+1, 16} ) / 2;
+        bigTable{i, 16} = avg;
+    end
+    i = i+1;
+end
