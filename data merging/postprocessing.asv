@@ -26,6 +26,6 @@ while(carTable{1, 1} - firstVal < dtx)
 end
 while(lastVal - carTable{end,1} < dtx)
     carTable(end, :) = [];
-end
+    
 
 
