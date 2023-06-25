@@ -31,16 +31,14 @@ end
 
 %% Reducing dimensions of mediapipe data (thumb, index+middle together, ring+pinky together)
 
-for i = 1:height(carTable)
-    carTable{i, 15} = (carTable{i, 11} + carTable{i, 12})/2;
-    carTable{i, 16} = (carTable{i, 13} + carTable{i, 14})/2;
+for i = 1:
+
 end
 
-carTable = removevars(carTable, ["index", "middle", "ring", "little"]);
-carTable = renamevars(carTable, ["Var15", "Var16"], ["index+middle", "ring+little"]);
 %% Output final data to csv
-
-currentTime = datetime;
-formattedTime = datestr(currentTime, 'yyyymmdd_HHMMSS');
-filename = strcat('combined_', formattedTime, '.csv');
-writetable(carTable, filename);
+while(carTable{1, 1} - firstVal < dtx)
+    carTable(1,:) = [];
+end
+while(lastVal - carTable{end,1} < dtx)
+    carTable(end, :) = [];
+end
