@@ -1,7 +1,7 @@
 filename = "EMG_data_20230622_003542.csv";
 EMG_table = readtable(filename);
 raw_EMG = table2array(EMG_table(:,2:9)); % extracts the EMG data without time stamps
-rms_EMG = sqrt(movmean(raw_EMG.^2,50,1)); % calculates the root mean square of along each column in a moving window of 50 rows
+rms_EMG = sqrt(movmean(raw_EMG.^2,100,1)); % calculates the root mean square of along each column in a moving window of 50 rows
 
 % visualizing the raw vs. rms EMG data for all 8 channels
 % clf
