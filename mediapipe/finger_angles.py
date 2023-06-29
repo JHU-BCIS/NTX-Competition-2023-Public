@@ -1,10 +1,5 @@
 # -*- coding: utf-8 -*-
-"""
-Spyder Editor
 
-This is a temporary script file.
-(Not anymore lol) -- Audrey
-"""
 import mediapipe as mp
 import cv2
 import numpy as np
@@ -16,11 +11,6 @@ from datetime import date
 from datetime import datetime
 import pandas as pd
 
-
-#now = datetime.now()
-#n = now.strftime('%y-%m-%d_%H-%M-%S.%f')[:-3]
-#csv_name = "mediapipe_"+n+".csv"
-#pd.DataFrame({}).to_csv(csv_name)
 
 mp_drawing = mp.solutions.drawing_utils
 mp_hands = mp.solutions.hands
@@ -39,7 +29,6 @@ cap = cv2.VideoCapture(index)
 Remember, you have to change all occurrences of this line! --Audrey
 """
 
-#modification made for Brian's Laptop
 index = 1 + cv2.CAP_MSMF
 cap = cv2.VideoCapture(index)
 
@@ -89,11 +78,6 @@ with mp_hands.Hands(min_detection_confidence=0.8, min_tracking_confidence=0.5) a
 cap.release()
 cv2.destroyAllWindows()
 
-#mp_drawing.DrawingSpec??
-
-#os.mkdir('Output Images')
-
-#modification made for Brian's Laptop
 index = 1+ cv2.CAP_MSMF
 cap = cv2.VideoCapture(index)
 
@@ -129,9 +113,7 @@ with mp_hands.Hands(min_detection_confidence=0.8, min_tracking_confidence=0.5) a
                                         mp_drawing.DrawingSpec(color=(121, 22, 76), thickness=2, circle_radius=4),
                                         mp_drawing.DrawingSpec(color=(250, 44, 250), thickness=2, circle_radius=2),
                                          )
-            
-        # Save our image    
-        #cv2.imwrite(os.path.join('Output Images', '{}.jpg'.format(uuid.uuid1())), image)
+
         cv2.imshow('Hand Tracking', image)
 
         if cv2.waitKey(10) & 0xFF == ord('q'):
@@ -140,9 +122,6 @@ with mp_hands.Hands(min_detection_confidence=0.8, min_tracking_confidence=0.5) a
 cap.release()
 cv2.destroyAllWindows()
 
-#print(mp_hands.HandLandmark.WRIST)
-#print(results.multi_hand_landmarks[1])
-#print(results.multi_handedness[0].classification[0].index == num)
 round(results.multi_handedness[0].classification[0].score, 2)
 def get_label(index, hand, results):
     output = None
@@ -165,7 +144,6 @@ def get_label(index, hand, results):
 
 get_label(num, hand, results)
 
-#modification made for Brian's Laptop
 index = 1 + cv2.CAP_MSMF
 cap = cv2.VideoCapture(index)
 
@@ -222,11 +200,8 @@ from matplotlib import pyplot as plt
 header = ['timestamp', 'thumb', 'index', 'middle', 'ring', 'little']
 data = []
 
-'''
-Modify this joint list to add/delete joint angle choices
-'''
+#Modify this joint list to add/delete joint angle choices, see MediaPipe documentation for details
 joint_list = [[4,2,0], [8,5,0], [12,9,0], [16,13,0], [20,17,0]]
-#joint_list[3]
 def draw_finger_angles(image, results, joint_list):
     
     # Loop through hands
@@ -256,17 +231,7 @@ def draw_finger_angles(image, results, joint_list):
                 
             cv2.putText(image, str(round(angle, 2)), tuple(np.multiply(b, [640, 480]).astype(int)),
                        cv2.FONT_HERSHEY_SIMPLEX, 0.5, (255, 255, 255), 2, cv2.LINE_AA)
-            #t = time.localtime()
-            #current_time = time.strftime("%H:%M:%S", t)
-            #today = date.today()
-            #d = today.strftime("%m/%d/%y")
-            """
-            No you don't need hand landmark data --Audrey
-            """
-            #print("hand landamark data starts")
-            #print(hand)
-            #print("hand landamark data ends")
-            #tempdata.append(joint)
+
             angles.append(angle)
             
         tempdata = []
@@ -279,10 +244,10 @@ def draw_finger_angles(image, results, joint_list):
 results.multi_hand_landmarks
 test_image = draw_finger_angles(image, results, joint_list)
 
-#modification made for Brian's Laptop
 index = 1 + cv2.CAP_MSMF
 cap = cv2.VideoCapture(index)
 
+#output to csv file
 now = datetime.now()
 n = now.strftime('%y%m%d_%H%M%S')[:-3]
 new_name = "mediapipe_"+n+".csv"
@@ -329,8 +294,6 @@ with mp_hands.Hands(min_detection_confidence=0.8, min_tracking_confidence=0.5) a
             # Draw angles to image from joint list
             draw_finger_angles(image, results, joint_list)
             
-        # Save our image    
-        #cv2.imwrite(os.path.join('Output Images', '{}.jpg'.format(uuid.uuid1())), image)
         cv2.imshow('Hand Tracking', image)
 
         

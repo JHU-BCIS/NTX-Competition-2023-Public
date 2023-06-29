@@ -900,52 +900,32 @@ classdef MiniVIE < Common.MiniVieObj
         %findme1
         %output current data point with time stamp
         function data = outputCurrentData(obj)
-            % obj is expected to be a MiniVIE object
             a = obj.SignalSource;
-            
-            time = datetime; % gets the current time when outputCurrentData() is called
-            time.Format = 'hh:mm:ss.SSS'; % formatted to include milliseconds
-            
-            currentData = a.getFilteredData(1,1:8); % gets the latest filtered sample from the buffer and the first 8 channels of the EMG
-
-            data = timetable(time, currentData); % combines the time stamp and latest EMG recording into a time table
+            time = datetime;
+            time.Format = 'hh:mm:ss.SSS';
+            currentData = a.getFilteredData(1,1:8);
+            data = timetable(time, currentData);
             disp(data);
         end
         
         %findme2
         %output a series of data points with time stamps in csv format
-        %run by calling this function in command line with "outputSeriesData(obj)"
         function series = outputSeriesData(obj) 
-        %apparently Matlab avoids making a copy of the input variable unless its modified, so this should be equivalent to passing by reference.
-
             series = timetable(); 
-            
-            % Create the main window
             fig = uifigure('Name', 'Series Data Collection', 'Position', [100 100 300 150]);
-
-            % Calculate button position
             btnWidth = 100;
             btnHeight = 22;
             btnX = (fig.Position(3) - btnWidth) / 2;
             btnY = (fig.Position(4) - btnHeight) / 2;
-            % Create the button
             btn = uibutton(fig, 'Text', 'Stop', 'Position', [btnX btnY btnWidth btnHeight]);
-
-            running = true;
-
-            % Button callback function
             btn.ButtonPushedFcn = @(~,~) stopLoopCallback();
-
-            % Loop while the stopLoop condition is false
+            running = true;
             while running
-                currentData = outputCurrentData(obj); %get current data point
-                series = [series; currentData]; %concatenate current data point to the series
-                drawnow; % Update the GUI and process callbacks
+                currentData = outputCurrentData(obj);
+                series = [series; currentData];
+                drawnow;
             end
-
-            delete(fig); % Clean up
-
-            % Nested function to handle button callback
+            delete(fig);
             function stopLoopCallback()
                 running = false;
                 currentTime = datetime;
